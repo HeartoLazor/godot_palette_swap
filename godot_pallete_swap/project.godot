@@ -1,0 +1,50 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=3
+
+[application]
+
+config/name="godot_pallete_swap"
+run/main_scene="res://main.tscn"
+config/icon="res://icon.png"
+target_fps=60
+
+[display]
+
+window/size/width=480
+window/size/height=270
+window/size/test_width=960
+window/size/test_height=540
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
+[image_loader]
+
+filter=false
+gen_mipmaps=false
+
+[importer_defaults]
+
+texture={
+"flags/filter": false,
+"flags/mipmaps": false
+}
+
+[rasterizer]
+
+trilinear_mipmap_filter=false
+
+[render]
+
+mipmap_policy=2
+
+[rendering]
+
+quality/2d/use_pixel_snap=true
+quality/filter/anisotropic_filter_level=0.0

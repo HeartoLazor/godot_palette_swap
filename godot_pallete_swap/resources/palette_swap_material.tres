@@ -1,0 +1,38 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://resources/megaman_mask_2.png" type="Texture" id=1]
+[ext_resource path="res://resources/palette_original.png" type="Texture" id=2]
+
+[sub_resource type="Shader" id=1]
+
+code = "shader_type canvas_item;
+
+//The palette used
+uniform sampler2D palette;
+//how many horizontal pixels has the palette
+uniform float palette_size;
+//Mask for wich color use from palette
+uniform sampler2D mask;
+
+void fragment() {
+	vec4 mask_color = texture(mask,UV);
+	vec4 output = texture(TEXTURE,UV);
+	if(mask_color.r != 1.0)
+	{
+		highp float color_r = mask_color.r;
+		//If an inconsistency appears between Intel and Amd/Nvidia, feel free to fix it and commit, but take this as a warning for production use
+		output = texture(palette,vec2((color_r*255.0+0.5)/255.0,0.0));
+	}
+	COLOR.rgba = output;
+}
+"
+
+[resource]
+
+render_priority = 0
+shader = SubResource( 1 )
+shader_param/palette_size = 4.0
+shader_param/palette = ExtResource( 2 )
+shader_param/mask = ExtResource( 1 )
+_sections_unfolded = [ "shader_param" ]
+

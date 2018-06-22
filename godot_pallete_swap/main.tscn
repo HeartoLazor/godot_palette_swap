@@ -1,0 +1,469 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://resources/palette_original.png" type="Texture" id=1]
+[ext_resource path="res://resources/palette_rush.png" type="Texture" id=2]
+[ext_resource path="res://resources/palette_charge.png" type="Texture" id=3]
+[ext_resource path="res://resources/palette_rush_charge.png" type="Texture" id=4]
+[ext_resource path="res://resources/palette_random.png" type="Texture" id=5]
+[ext_resource path="res://resources/palette_swap_material.tres" type="Material" id=6]
+[ext_resource path="res://resources/megaman_1.png" type="Texture" id=7]
+[ext_resource path="res://resources/megaman_2.png" type="Texture" id=8]
+[ext_resource path="res://resources/megaman_3.png" type="Texture" id=9]
+[ext_resource path="res://frames.gd" type="Script" id=10]
+[ext_resource path="res://resources/megaman_mask_1.png" type="Texture" id=11]
+[ext_resource path="res://resources/megaman_mask_2.png" type="Texture" id=12]
+[ext_resource path="res://resources/megaman_mask_3.png" type="Texture" id=13]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=4]
+
+length = 0.8
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
+
+[sub_resource type="Animation" id=5]
+
+length = 0.2
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:palette_index")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=6]
+
+length = 0.2
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:palette_index")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=7]
+
+length = 0.2
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:palette_index")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=8]
+
+length = 0.2
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:palette_index")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=9]
+
+length = 0.2
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:palette_index")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 3 ]
+}
+
+[node name="main" type="Node2D" index="0"]
+
+[node name="hud" type="Node2D" parent="." index="0"]
+
+[node name="label_fps" type="Label" parent="hud" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 429.0
+margin_top = 250.0
+margin_right = 479.0
+margin_bottom = 270.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+text = "FPS: 60"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="label_info" type="Label" parent="hud" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 7.0
+margin_right = 310.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+text = "INFORMATION"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="button_megaman" type="Button" parent="hud" index="2"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 210.0
+margin_top = 31.0
+margin_right = 370.0
+margin_bottom = 61.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "MEGAMAN"
+flat = false
+align = 1
+
+[node name="palette_reference" type="Sprite" parent="hud/button_megaman" index="0"]
+
+position = Vector2( 170, 11 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="button_rush" type="Button" parent="hud" index="3"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 210.0
+margin_top = 71.0
+margin_right = 370.0
+margin_bottom = 101.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "RUSH"
+flat = false
+align = 1
+
+[node name="palette_reference" type="Sprite" parent="hud/button_rush" index="0"]
+
+position = Vector2( 170, 9 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="button_megaman_charged" type="Button" parent="hud" index="4"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 210.0
+margin_top = 111.0
+margin_right = 370.0
+margin_bottom = 141.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "MEGAMAN CHARGED"
+flat = false
+align = 1
+
+[node name="palette_reference" type="Sprite" parent="hud/button_megaman_charged" index="0"]
+
+position = Vector2( 170, 9.99999 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="label_plus" type="Label" parent="hud/button_megaman_charged" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 213.0
+margin_top = 8.0
+margin_right = 223.0
+margin_bottom = 21.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+text = "+"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="palette_reference_charged" type="Sprite" parent="hud/button_megaman_charged" index="2"]
+
+position = Vector2( 223, 9.99999 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="button_rush_charged" type="Button" parent="hud" index="5"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 210.0
+margin_top = 151.0
+margin_right = 370.0
+margin_bottom = 181.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "RUSH CHARGED"
+flat = false
+align = 1
+
+[node name="palette_reference" type="Sprite" parent="hud/button_rush_charged" index="0"]
+
+position = Vector2( 170, 9 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="label_plus" type="Label" parent="hud/button_rush_charged" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 213.0
+margin_top = 7.0
+margin_right = 223.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+text = "+"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="palette_reference_charged" type="Sprite" parent="hud/button_rush_charged" index="2"]
+
+position = Vector2( 223, 8.99998 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="button_random_palette" type="Button" parent="hud" index="6"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 210.0
+margin_top = 196.0
+margin_right = 370.0
+margin_bottom = 226.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "RANDOM COLOR"
+flat = false
+align = 1
+
+[node name="palette_reference" type="Sprite" parent="hud/button_random_palette" index="0"]
+
+position = Vector2( 170, 9 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="megaman" type="AnimatedSprite" parent="." index="1"]
+
+editor/display_folded = true
+material = ExtResource( 6 )
+position = Vector2( 68, 124 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 1 )
+animation = "default"
+frame = 1
+script = ExtResource( 10 )
+_sections_unfolded = [ "Material", "Visibility" ]
+color_mask = SubResource( 2 )
+palettes = SubResource( 3 )
+palette_index = 0
+
+[node name="normal_animations" type="AnimationPlayer" parent="megaman" index="0"]
+
+root_node = NodePath("..")
+autoplay = "run"
+playback_process_mode = 0
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/run = SubResource( 4 )
+blend_times = [  ]
+
+[node name="shader_animations" type="AnimationPlayer" parent="megaman" index="1"]
+
+root_node = NodePath("..")
+autoplay = "megaman"
+playback_process_mode = 0
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/megaman = SubResource( 5 )
+anims/megaman_charged = SubResource( 6 )
+anims/random = SubResource( 7 )
+anims/rush = SubResource( 8 )
+anims/rush_charged = SubResource( 9 )
+blend_times = [  ]
+
+[connection signal="pressed" from="hud/button_megaman" to="megaman" method="_on_button_megaman_pressed"]
+
+[connection signal="pressed" from="hud/button_rush" to="megaman" method="_on_button_rush_pressed"]
+
+[connection signal="pressed" from="hud/button_megaman_charged" to="megaman" method="_on_button_megaman_charged_pressed"]
+
+[connection signal="pressed" from="hud/button_rush_charged" to="megaman" method="_on_button_rush_charged_pressed"]
+
+[connection signal="pressed" from="hud/button_random_palette" to="megaman" method="_on_button_random_palette_pressed"]
+
+[connection signal="frame_changed" from="megaman" to="megaman" method="_on_AnimatedSprite_frame_changed"]
+
+
