@@ -61,6 +61,6 @@ All this explanation could be summarized in this image:
 ![Guide](https://i.imgur.com/0fJQJ0z.png)  
 
 ### License
-GNU General Public License 3.0
+MIT License
 
 Author: Hearto Lazor
